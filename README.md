@@ -1,0 +1,1 @@
+# rinkisyo92030115.github.io
