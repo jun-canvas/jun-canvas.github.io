@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub初心者がつまずいた5つのポイント — j.u.n</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;
+  --accent:#5b8fff;--accent2:#a78bfa;--accent3:#34d399;
+  --text:#e0e0e8;--muted:#6b6b80;--border:#2a2a3a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);min-height:100vh;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,15,0.92);backdrop-filter:blur(12px);z-index:100;}
+.logo{font-size:22px;font-weight:700;letter-spacing:0.15em;color:var(--text);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:var(--muted);font-size:13px;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.article{max-width:720px;margin:0 auto;padding:56px 40px 72px;}
+.back{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:32px;transition:color .2s;}
+.back::before{content:'←';}
+.back:hover{color:var(--accent);}
+.art-meta{display:flex;gap:16px;align-items:center;margin-bottom:20px;}
+.art-num{font-size:11px;letter-spacing:0.15em;color:var(--accent2);}
+.art-date{font-size:11px;letter-spacing:0.1em;color:var(--muted);}
+.art-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);color:var(--muted);border-radius:2px;}
+.art-title{font-size:clamp(26px,4.5vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.3;color:var(--text);margin-bottom:40px;}
+.art-body{font-family:system-ui,sans-serif;color:var(--text);line-height:1.9;font-size:15px;}
+.art-body h2{font-family:'Courier New',monospace;font-size:19px;font-weight:700;color:var(--text);margin:44px 0 18px;padding-top:24px;border-top:1px solid var(--border);letter-spacing:-0.01em;line-height:1.4;}
+.art-body h2:first-of-type{border-top:none;padding-top:0;}
+.art-body h3{font-size:15px;font-weight:700;color:var(--accent2);margin:24px 0 10px;}
+.art-body p{margin-bottom:18px;color:var(--muted);}
+.art-body strong{color:var(--text);font-weight:600;}
+.art-body ul,.art-body ol{margin:0 0 18px 4px;padding-left:22px;color:var(--muted);}
+.art-body li{margin-bottom:8px;line-height:1.8;}
+.art-body code{font-family:'Courier New',monospace;background:var(--bg3);padding:2px 7px;border-radius:3px;font-size:13px;color:var(--accent3);}
+.imgph{background:var(--bg2);border:1px dashed var(--border);border-radius:4px;padding:40px 20px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:0.08em;margin:24px 0;font-family:'Courier New',monospace;}
+.art-nav{display:flex;justify-content:space-between;margin-top:56px;padding-top:28px;border-top:1px solid var(--border);gap:16px;}
+.art-nav a{font-size:12px;letter-spacing:0.05em;color:var(--accent);text-decoration:none;transition:color .2s;}
+.art-nav a:hover{color:var(--text);}
+.footer{padding:24px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);letter-spacing:0.08em;border-top:1px solid var(--border);}
+.footer-logo{color:var(--text);font-weight:700;text-decoration:none;}
+@media(max-width:640px){.nav{padding:16px 20px;}.article{padding:40px 20px 56px;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="logo">j<span>.</span>u<span>.</span>n</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../blog.html">Blog</a>
+    <a href="https://youtube.com/@jun.acoustic_moto_life" target="_blank">YouTube</a>
+  </div>
+</nav>
+
+<article class="article">
+  <a href="../blog.html" class="back">Blog一覧へ</a>
+  <div class="art-meta">
+    <span class="art-num">POST — 02</span>
+    <span class="art-date">2026.06.12</span>
+    <span class="art-tag">GitHub</span>
+  </div>
+  <h1 class="art-title">GitHub初心者がつまずいた<br>5つのポイント</h1>
+
+  <div class="art-body">
+
+    <h2>はじめに</h2>
+    <p>前回の記事で、AIと一緒にホームページを作った流れを紹介しました。その中で、特にGitHubの設定でいくつもつまずきました。</p>
+    <p>この記事では、初心者の私が実際にハマった5つのポイントと、その解決方法をまとめます。同じところでつまずく人は多いはずなので、先に知っておくと安心です。</p>
+
+    <h2>つまずき1：リポジトリが「Private（非公開）」になっていた</h2>
+    <p>リポジトリ（ファイルの入れ物）を作ったのですが、最初は「Private」という非公開状態になっていました。</p>
+    <p>GitHub Pagesの無料プランでサイトを公開するには、<strong>「Public（公開）」である必要があります。</strong>Privateのままだと、いくらファイルを入れてもサイトは表示されません。</p>
+    <h3>解決方法</h3>
+    <p>リポジトリの「Settings（設定）」の一番下、「Danger Zone（危険地帯）」にある「Change visibility」から、Publicに変更しました。「危険地帯」という名前にビビりますが、今回のような作りたてのリポジトリなら問題ありません。</p>
+    <div class="imgph">［ 画像：可視性変更の画面 ］</div>
+
+    <h2>つまずき2：ユーザー名がメールアドレスと同じだった</h2>
+    <p>これは盲点でした。リポジトリ名は <code>ユーザー名.github.io</code> にする必要があり、それがそのまま<strong>公開URL</strong>になります。</p>
+    <p>ところが私のGitHubユーザー名は、普段使っているメールアドレスの一部と同じ文字列でした。つまり、そのまま公開するとURLにメールアドレスが載ってしまう状態だったのです。</p>
+    <h3>解決方法</h3>
+    <p>GitHubのユーザー名そのものを変更しました。アカウントの「Settings → Account → Change username」から変更できます。私は <code>jun-canvas</code> というシンプルな名前に変えました。</p>
+    <p>公開URLは自分の「顔」になる部分なので、ここは妥協せずに決めるのがおすすめです。</p>
+
+    <h2>つまずき3：同じファイルが何個もアップロードされた</h2>
+    <p>ファイルをアップロードしようとしたとき、操作を繰り返してしまい、同じ <code>index.html</code> が何個もアップロード待ちのリストに並んでしまいました。エラーも出ました。</p>
+    <h3>解決方法</h3>
+    <p>アップロード画面で、各ファイルの右にある「×」を押して全部消し、改めて1つだけドラッグし直しました。落ち着いて1ファイルずつ確認するのが確実です。</p>
+
+    <h2>つまずき4：日本語のファイル名問題（実は勘違い）</h2>
+    <p>アップロードした画像ファイルが、GitHub上で「ドラム.jpg」と日本語表示されていて焦りました。HTMLは英語名の <code>drums.jpg</code> を探すので、これでは画像が表示されないはず…と思いました。</p>
+    <p>ところが原因は、<strong>ブラウザの自動翻訳機能</strong>でした。<code>drums</code> という英単語を、ブラウザが親切に「ドラム」と日本語訳して表示していただけだったのです。実際のファイル名は英語のままでした。</p>
+    <h3>教訓</h3>
+    <p>ファイル名が変に見えたら、まずブラウザの翻訳がオンになっていないか確認するといいです。画面右上に「日本語に翻訳／元に戻す」というバーが出ていたら、それが原因です。</p>
+    <div class="imgph">［ 画像：翻訳バーが出ている画面 ］</div>
+
+    <h2>つまずき5：画像が表示されない原因</h2>
+    <p>カードの背景に画像を入れたのに、最初は表示されませんでした。</p>
+    <h3>原因と解決方法</h3>
+    <p>HTMLのコードが探しているファイル名と、実際にアップロードしたファイル名が一致していないと、画像は表示されません。例えばコードが <code>drums.jpg</code> を探しているのに、ファイルが <code>ドラム.jpg</code> だと見つけられないのです。</p>
+    <p>ファイル名は「コードが指定している名前」と「実際のファイル名」を、英語で完全に一致させる。これが鉄則でした。</p>
+
+    <h2>まとめ</h2>
+    <p>初心者がGitHubでつまずきやすいポイントは、だいたいこの5つに集約されます。</p>
+    <ol>
+      <li>リポジトリはPublicにする</li>
+      <li>ユーザー名（＝URL）は公開して大丈夫な名前にする</li>
+      <li>ファイルは1つずつ落ち着いてアップする</li>
+      <li>表示がおかしいときはブラウザ翻訳を疑う</li>
+      <li>ファイル名はコードと完全一致させる</li>
+    </ol>
+    <p>どれも一度知ってしまえば簡単なことばかりです。最初は戸惑いましたが、AIに画面のスクリーンショットを見せながら相談すれば、その場で解決できました。</p>
+
+  </div>
+
+  <div class="art-nav">
+    <a href="01-ai-homepage.html">← 前の記事：AIとHPを作った全記録</a>
+    <span></span>
+  </div>
+</article>
+
+<footer class="footer">
+  <a href="../index.html" class="footer-logo">j.u.n</a>
+  <span>Built with Claude · GitHub Pages</span>
+</footer>
+
+</body>
+</html>
