@@ -93,32 +93,57 @@ body{
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
 .channel-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;
 }
 .channel-card{
-  background:var(--bg2);padding:32px 28px;
+  position:relative;
+  min-height:340px;
   border:1px solid var(--border);
-  transition:border-color .2s,background .2s;
-  cursor:pointer;position:relative;overflow:hidden;
+  border-radius:4px;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  transition:border-color .25s, transform .25s;
+  background-size:cover;
+  background-position:center;
 }
 .channel-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(10,10,15,0.25) 0%,
+    rgba(10,10,15,0.55) 45%,
+    rgba(10,10,15,0.92) 100%);
+  transition:background .25s;
+}
+.channel-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:var(--card-accent,var(--accent));
   transform:scaleX(0);transform-origin:left;
   transition:transform .3s;
+  z-index:2;
 }
-.channel-card:hover{border-color:var(--card-accent,var(--accent));background:var(--bg3);}
-.channel-card:hover::before{transform:scaleX(1);}
+.channel-card:hover{border-color:var(--card-accent,var(--accent));transform:translateY(-4px);}
+.channel-card:hover::after{transform:scaleX(1);}
+.card-body{
+  position:relative;z-index:1;
+  padding:28px 26px;
+}
 .card-num{
-  font-size:11px;letter-spacing:0.15em;color:var(--muted);
-  margin-bottom:20px;
+  font-size:11px;letter-spacing:0.15em;color:rgba(224,224,232,0.7);
+  margin-bottom:14px;
 }
-.card-icon{font-size:28px;margin-bottom:16px;line-height:1;}
-.card-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-0.01em;}
+.card-icon{
+  width:34px;height:34px;margin-bottom:14px;
+  color:var(--card-accent,var(--accent));
+}
+.card-icon svg{width:100%;height:100%;}
+.card-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-0.01em;}
 .card-sub{
   font-family:system-ui,sans-serif;
-  font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;
+  font-size:13px;color:rgba(224,224,232,0.85);line-height:1.6;margin-bottom:18px;
 }
 .card-link{
   font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
@@ -126,7 +151,7 @@ body{
   display:inline-flex;align-items:center;gap:6px;
 }
 .card-link::after{content:'→';}
-.card-link.disabled{opacity:0.4;cursor:default;pointer-events:none;}
+.card-link.disabled{opacity:0.5;cursor:default;pointer-events:none;}
 
 /* About */
 .about{
@@ -197,30 +222,58 @@ body{
   <div class="section-label">Channels</div>
   <div class="channel-grid">
 
-    <div class="channel-card" style="--card-accent:#5b8fff"
+    <div class="channel-card" style="--card-accent:#5b8fff; background-image:url('moto.jpg')"
          onclick="window.open('https://youtube.com/@jun.acoustic_moto_life','_blank')">
-      <div class="card-num">CH — 01</div>
-      <div class="card-icon">🏍</div>
-      <div class="card-title">Moto &amp; Life</div>
-      <div class="card-sub">車・バイクのカスタムとメンテナンスを地味に、でも丁寧に。</div>
-      <span class="card-link">YouTube で見る</span>
+      <div class="card-body">
+        <div class="card-num">CH — 01</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5.5" cy="17.5" r="3.5"/>
+            <circle cx="18.5" cy="17.5" r="3.5"/>
+            <path d="M5.5 17.5h4l3.5-6h4"/>
+            <path d="M13 11.5l-2-4h-3"/>
+            <path d="M15 7.5h3l1.5 4"/>
+          </svg>
+        </div>
+        <div class="card-title">Moto &amp; Life</div>
+        <div class="card-sub">車・バイクのカスタムとメンテナンスを地味に、でも丁寧に。</div>
+        <span class="card-link">YouTube で見る</span>
+      </div>
     </div>
 
-    <div class="channel-card" style="--card-accent:#a78bfa"
+    <div class="channel-card" style="--card-accent:#a78bfa; background-image:url('drums.jpg')"
          onclick="window.open('https://youtube.com/@j.u.n.canvas.channel','_blank')">
-      <div class="card-num">CH — 02</div>
-      <div class="card-icon">🥁</div>
-      <div class="card-title">Canvas</div>
-      <div class="card-sub">電子ドラム独学 ＆ ギター練習。未経験からの成長記録。</div>
-      <span class="card-link">YouTube で見る</span>
+      <div class="card-body">
+        <div class="card-num">CH — 02</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="9" rx="8" ry="3"/>
+            <path d="M4 9v7c0 1.66 3.58 3 8 3s8-1.34 8-3V9"/>
+            <path d="M20 3l-5.5 4.2"/>
+            <path d="M4 3l5.5 4.2"/>
+          </svg>
+        </div>
+        <div class="card-title">Canvas</div>
+        <div class="card-sub">電子ドラム独学 ＆ ギター練習。未経験からの成長記録。</div>
+        <span class="card-link">YouTube で見る</span>
+      </div>
     </div>
 
-    <div class="channel-card" style="--card-accent:#34d399">
-      <div class="card-num">CH — 03</div>
-      <div class="card-icon">📊</div>
-      <div class="card-title">Study</div>
-      <div class="card-sub">FP&amp;A・MOS Excel 資格取得に向けた学習記録。近日公開。</div>
-      <span class="card-link disabled">Coming soon</span>
+    <div class="channel-card" style="--card-accent:#34d399; background-image:url('study.jpg')">
+      <div class="card-body">
+        <div class="card-num">CH — 03</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/>
+            <rect x="5" y="12" width="3" height="9"/>
+            <rect x="10.5" y="7" width="3" height="14"/>
+            <rect x="16" y="3" width="3" height="18"/>
+          </svg>
+        </div>
+        <div class="card-title">Study</div>
+        <div class="card-sub">FP&amp;A・MOS Excel 資格取得に向けた学習記録。近日公開。</div>
+        <span class="card-link disabled">Coming soon</span>
+      </div>
     </div>
 
   </div>
