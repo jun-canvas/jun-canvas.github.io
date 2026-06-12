@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>j.u.n — Ride. Play. Learn.</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#12121a;
+  --bg3:#1a1a26;
+  --accent:#5b8fff;
+  --accent2:#a78bfa;
+  --accent3:#34d399;
+  --text:#e0e0e8;
+  --muted:#6b6b80;
+  --border:#2a2a3a;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Courier New',monospace;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* Nav */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 40px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;
+  background:rgba(10,10,15,0.92);
+  backdrop-filter:blur(12px);
+  z-index:100;
+}
+.logo{font-size:22px;font-weight:700;letter-spacing:0.15em;color:var(--text);}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{
+  color:var(--muted);font-size:13px;letter-spacing:0.08em;
+  text-decoration:none;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--text);}
+
+/* Hero */
+.hero{
+  padding:80px 40px 64px;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.hero-eyebrow{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
+}
+.hero-title{
+  font-size:clamp(40px,7vw,72px);font-weight:700;
+  line-height:1.08;letter-spacing:-0.02em;
+  color:var(--text);margin-bottom:24px;
+}
+.hero-title em{
+  font-style:normal;color:transparent;
+  -webkit-text-stroke:1px var(--accent2);
+}
+.hero-desc{
+  font-family:system-ui,sans-serif;
+  font-size:15px;color:var(--muted);line-height:1.7;
+  max-width:480px;margin-bottom:36px;
+}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;}
+.tag{
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  padding:6px 14px;border:1px solid var(--border);
+  color:var(--muted);border-radius:2px;
+}
+.grid-accent{
+  position:absolute;right:-60px;top:20px;
+  width:360px;height:360px;opacity:0.04;
+  background:
+    repeating-linear-gradient(0deg,#5b8fff 0,#5b8fff 1px,transparent 1px,transparent 32px),
+    repeating-linear-gradient(90deg,#5b8fff 0,#5b8fff 1px,transparent 1px,transparent 32px);
+  pointer-events:none;
+}
+
+/* Channels */
+.channels{padding:56px 40px;border-bottom:1px solid var(--border);}
+.section-label{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:32px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.channel-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2px;
+}
+.channel-card{
+  background:var(--bg2);padding:32px 28px;
+  border:1px solid var(--border);
+  transition:border-color .2s,background .2s;
+  cursor:pointer;position:relative;overflow:hidden;
+}
+.channel-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--card-accent,var(--accent));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.channel-card:hover{border-color:var(--card-accent,var(--accent));background:var(--bg3);}
+.channel-card:hover::before{transform:scaleX(1);}
+.card-num{
+  font-size:11px;letter-spacing:0.15em;color:var(--muted);
+  margin-bottom:20px;
+}
+.card-icon{font-size:28px;margin-bottom:16px;line-height:1;}
+.card-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-0.01em;}
+.card-sub{
+  font-family:system-ui,sans-serif;
+  font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;
+}
+.card-link{
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--card-accent,var(--accent));text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.card-link::after{content:'→';}
+.card-link.disabled{opacity:0.4;cursor:default;pointer-events:none;}
+
+/* About */
+.about{
+  padding:56px 40px;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
+}
+@media(max-width:640px){
+  .about{grid-template-columns:1fr;}
+  .nav{padding:16px 20px;}
+  .hero,.channels,.about{padding-left:20px;padding-right:20px;}
+}
+.about-label{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:20px;
+}
+.about-title{
+  font-size:28px;font-weight:700;color:var(--text);
+  line-height:1.2;letter-spacing:-0.01em;margin-bottom:16px;
+}
+.about-text{
+  font-family:system-ui,sans-serif;
+  font-size:14px;color:var(--muted);line-height:1.75;
+}
+.spec-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:14px 0;border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.spec-key{color:var(--muted);letter-spacing:0.05em;}
+.spec-val{color:var(--text);text-align:right;}
+
+/* Footer */
+.footer{
+  padding:24px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;color:var(--muted);letter-spacing:0.08em;
+}
+.footer-logo{color:var(--text);font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="logo">j<span>.</span>u<span>.</span>n</div>
+  <div class="nav-links">
+    <a href="#channels">Channels</a>
+    <a href="#about">About</a>
+    <a href="https://youtube.com/@jun.acoustic_moto_life" target="_blank">YouTube</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="grid-accent"></div>
+  <div class="hero-eyebrow">Personal Portfolio</div>
+  <h1 class="hero-title">Ride.<br><em>Play.</em><br>Learn.</h1>
+  <p class="hero-desc">バイク・カスタム、電子ドラム独学、資格取得。<br>40代、趣味と学習をゆっくり記録しています。</p>
+  <div class="hero-tags">
+    <span class="tag">Moto &amp; Custom</span>
+    <span class="tag">Electronic Drums</span>
+    <span class="tag">FP&amp;A / Excel</span>
+  </div>
+</section>
+
+<!-- Channels -->
+<section class="channels" id="channels">
+  <div class="section-label">Channels</div>
+  <div class="channel-grid">
+
+    <div class="channel-card" style="--card-accent:#5b8fff"
+         onclick="window.open('https://youtube.com/@jun.acoustic_moto_life','_blank')">
+      <div class="card-num">CH — 01</div>
+      <div class="card-icon">🏍</div>
+      <div class="card-title">Moto &amp; Life</div>
+      <div class="card-sub">車・バイクのカスタムとメンテナンスを地味に、でも丁寧に。</div>
+      <span class="card-link">YouTube で見る</span>
+    </div>
+
+    <div class="channel-card" style="--card-accent:#a78bfa"
+         onclick="window.open('https://youtube.com/@j.u.n.canvas.channel','_blank')">
+      <div class="card-num">CH — 02</div>
+      <div class="card-icon">🥁</div>
+      <div class="card-title">Canvas</div>
+      <div class="card-sub">電子ドラム独学 ＆ ギター練習。未経験からの成長記録。</div>
+      <span class="card-link">YouTube で見る</span>
+    </div>
+
+    <div class="channel-card" style="--card-accent:#34d399">
+      <div class="card-num">CH — 03</div>
+      <div class="card-icon">📊</div>
+      <div class="card-title">Study</div>
+      <div class="card-sub">FP&amp;A・MOS Excel 資格取得に向けた学習記録。近日公開。</div>
+      <span class="card-link disabled">Coming soon</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-left">
+    <div class="about-label">About</div>
+    <h2 class="about-title">趣味と仕事の<br>あいだで。</h2>
+    <p class="about-text">40代後半。経営企画部に勤めながら、バイク・電子ドラム・資格学習を少しずつ続けています。<br><br>派手ではないけれど、自分のペースで積み上げていくことを記録しています。</p>
+  </div>
+  <div class="about-right">
+    <div class="spec-row"><span class="spec-key">Instrument</span><span class="spec-val">Electronic Drums, Guitar</span></div>
+    <div class="spec-row"><span class="spec-key">Hobby</span><span class="spec-val">Moto Custom &amp; Maintenance</span></div>
+    <div class="spec-row"><span class="spec-key">Study</span><span class="spec-val">FP&amp;A / MOS Excel Expert</span></div>
+    <div class="spec-row"><span class="spec-key">Site built with</span><span class="spec-val">Claude + GitHub Pages</span></div>
+    <div class="spec-row"><span class="spec-key">Started</span><span class="spec-val">2025 —</span></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <span class="footer-logo">j.u.n</span>
+  <span>Built with Claude · GitHub Pages · 無料で公開</span>
+</footer>
+
+</body>
+</html>
