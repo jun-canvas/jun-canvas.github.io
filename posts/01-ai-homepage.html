@@ -39,6 +39,8 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);
 .art-body code{font-family:'Courier New',monospace;background:var(--bg3);padding:2px 7px;border-radius:3px;font-size:13px;color:var(--accent3);}
 .art-body pre{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:16px 18px;overflow-x:auto;margin-bottom:18px;}
 .art-body pre code{background:none;padding:0;color:var(--accent3);}
+.art-img{width:100%;border:1px solid var(--border);border-radius:4px;margin:24px 0;display:block;}
+.art-cap{font-family:'Courier New',monospace;font-size:11px;color:var(--muted);text-align:center;margin:-12px 0 24px;letter-spacing:0.05em;}
 .imgph{background:var(--bg2);border:1px dashed var(--border);border-radius:4px;padding:40px 20px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:0.08em;margin:24px 0;font-family:'Courier New',monospace;}
 .art-nav{display:flex;justify-content:space-between;margin-top:56px;padding-top:28px;border-top:1px solid var(--border);gap:16px;}
 .art-nav a{font-size:12px;letter-spacing:0.05em;color:var(--accent);text-decoration:none;transition:color .2s;}
@@ -74,7 +76,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);
     <p>プログラミングの知識がほとんどない私が、AI（Claude）と対話しながら、自分のポートフォリオサイトをゼロから作り、無料で公開するまでの記録です。</p>
     <p>特別なソフトは使っていません。使ったのは、Claudeとのチャット、GitHub（無料）、ブラウザだけ。費用もゼロ円です。</p>
     <p>同じように「ホームページを作ってみたいけど、何から手をつければいいか分からない」という方の参考になればと思います。</p>
-    <div class="imgph">［ 画像：完成したサイトのトップ画面 ］</div>
+    <img src="img/site-top.jpg" alt="完成したサイトのトップ画面" class="art-img"><p class="art-cap">完成したトップページ</p>
 
     <h2>使ったもの</h2>
     <ul>
@@ -103,7 +105,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);
       <li>載せたい内容（3つのチャンネルへのリンク）</li>
     </ul>
     <p>これを伝えると、Claudeがその場で動くプロトタイプを見せてくれました。実際の見た目を確認しながら進められるので、イメージのズレがありません。</p>
-    <div class="imgph">［ 画像：プロトタイプのスクリーンショット ］</div>
+    <img src="img/fig-flow.png" alt="制作の4ステップ" class="art-img"><p class="art-cap">制作の全体フロー</p>
 
     <h2>ステップ2：GitHubに公開の場所を用意する</h2>
     <p>ここが初心者にとって最初の関門でした。GitHubは、作ったファイルを置いて公開できる無料サービスです。</p>
@@ -121,7 +123,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);
     <p>「コミット」というボタンを押すと保存され、数分後には</p>
     <pre><code>https://（自分のID）.github.io</code></pre>
     <p>というURLで、世界中からアクセスできるサイトが公開されました。この瞬間は本当に感動しました。</p>
-    <div class="imgph">［ 画像：公開された瞬間の画面 ］</div>
+    <img src="img/github-repo.jpg" alt="GitHubにアップしたファイル" class="art-img"><p class="art-cap">GitHubにファイルをアップした状態</p>
 
     <h2>ステップ4：中身を磨き込む</h2>
     <p>公開できた最初のバージョンは、正直まだ地味でした。そこからClaudeと相談しながら、少しずつ磨いていきました。</p>
@@ -133,7 +135,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);
       <li>説明文を「日記っぽい言葉」から「ポートフォリオらしい言葉」に書き換えた</li>
     </ul>
     <p>例えば最初は「趣味と学習をゆっくり記録しています」という説明文でしたが、これを「趣味と研鑽の、あいだ。」というシンプルな言葉に変えるだけで、ぐっと洗練されました。</p>
-    <div class="imgph">［ 画像：ビフォーアフター比較 ］</div>
+    <img src="img/fig-beforeafter.png" alt="文章のビフォーアフター" class="art-img"><p class="art-cap">説明文のビフォーアフター</p>
 
     <h2>やってみて分かったこと</h2>
     <p><strong>AIは「それっぽい答え」を自信満々に出す。でも、最初に自分の条件を伝えることが大事。</strong></p>
