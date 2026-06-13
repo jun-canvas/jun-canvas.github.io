@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 【1】記事タイトル（検索結果に出る。32文字前後が目安） -->
+<title>【記事タイトル】 — j.u.n</title>
+
+<!-- ===== SEO ここから ===== -->
+<!-- 【2】記事の説明文（検索結果に出る2行。80〜120文字） -->
+<meta name="description" content="【この記事が何かを1〜2文で。読者が検索しそうな言葉を自然に入れる】">
+<!-- 【3】このページのURL（ファイル名に合わせる） -->
+<link rel="canonical" href="https://jun-canvas.github.io/posts/【ファイル名】.html">
+
+<!-- OGP（SNSでシェアされたときの見た目） -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="【記事タイトル】">
+<meta property="og:description" content="【記事の説明文（短め）】">
+<meta property="og:url" content="https://jun-canvas.github.io/posts/【ファイル名】.html">
+<meta property="og:image" content="https://jun-canvas.github.io/ogp.png">
+<meta property="og:site_name" content="j.u.n">
+<meta property="og:locale" content="ja_JP">
+
+<!-- Twitter（X）カード -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="【記事タイトル】">
+<meta name="twitter:description" content="【記事の説明文（短め）】">
+<meta name="twitter:image" content="https://jun-canvas.github.io/ogp.png">
+
+<!-- 構造化データ（検索エンジンに「記事」だと伝える） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【記事タイトル】",
+  "description": "【記事の説明文】",
+  "datePublished": "【2026-06-13】",
+  "author": { "@type": "Person", "name": "j.u.n" },
+  "publisher": { "@type": "Organization", "name": "j.u.n" },
+  "mainEntityOfPage": "https://jun-canvas.github.io/posts/【ファイル名】.html"
+}
+</script>
+<!-- ===== SEO ここまで ===== -->
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;
+  --accent:#5b8fff;--accent2:#a78bfa;--accent3:#34d399;
+  --text:#e0e0e8;--muted:#6b6b80;--border:#2a2a3a;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* Nav */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,15,0.92);backdrop-filter:blur(12px);z-index:100;}
+.logo{font-size:22px;font-weight:700;letter-spacing:0.15em;color:var(--text);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:var(--muted);font-size:13px;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+
+/* Article wrapper */
+.article{max-width:760px;margin:0 auto;padding:64px 40px 0;}
+.post-meta{display:flex;gap:16px;align-items:center;margin-bottom:18px;}
+.post-num{font-size:11px;letter-spacing:0.15em;color:var(--card-accent,var(--accent));}
+.post-date{font-size:11px;letter-spacing:0.1em;color:var(--muted);}
+.post-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);color:var(--muted);border-radius:2px;}
+.article-title{font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:-0.02em;line-height:1.25;color:var(--text);margin-bottom:40px;}
+
+/* Article body (本文は読みやすい sans-serif) */
+.body{font-family:system-ui,sans-serif;font-size:15.5px;line-height:1.9;color:var(--text);}
+.body p{margin-bottom:22px;color:#cfcfda;}
+.body h2{
+  font-family:'Courier New',monospace;font-size:22px;font-weight:700;letter-spacing:-0.01em;
+  color:var(--text);margin:52px 0 20px;padding-top:28px;border-top:1px solid var(--border);
+}
+.body h3{
+  font-family:'Courier New',monospace;font-size:16px;font-weight:700;letter-spacing:0.02em;
+  color:var(--card-accent,var(--accent));margin:32px 0 14px;
+}
+.body ul,.body ol{margin:0 0 22px 1.4em;color:#cfcfda;}
+.body li{margin-bottom:10px;line-height:1.8;}
+.body strong{color:var(--text);font-weight:700;}
+.body a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(91,143,255,0.4);}
+.body a:hover{border-bottom-color:var(--accent);}
+.body code{font-family:'Courier New',monospace;font-size:13px;color:var(--accent3);background:var(--bg3);padding:2px 7px;border-radius:3px;}
+.body pre{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:18px 20px;overflow-x:auto;margin:0 0 22px;}
+.body pre code{background:none;padding:0;color:var(--accent3);line-height:1.7;}
+.body blockquote{border-left:2px solid var(--accent2);padding:4px 0 4px 20px;margin:0 0 22px;color:var(--muted);font-style:italic;}
+.figure{margin:0 0 28px;}
+.figure img{width:100%;border:1px solid var(--border);border-radius:4px;display:block;}
+.figure figcaption{font-size:12px;color:var(--muted);margin-top:10px;letter-spacing:0.03em;text-align:center;}
+
+/* Prev / Next */
+.post-nav{max-width:760px;margin:56px auto 0;padding:32px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;}
+.post-nav a{font-family:'Courier New',monospace;font-size:12px;letter-spacing:0.08em;color:var(--muted);text-decoration:none;transition:color .2s;max-width:46%;}
+.post-nav a:hover{color:var(--accent);}
+.post-nav .label{display:block;font-size:10px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.post-nav .next{text-align:right;margin-left:auto;}
+
+/* Footer */
+.footer{padding:24px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);letter-spacing:0.08em;border-top:1px solid var(--border);margin-top:40px;}
+.footer-logo{color:var(--text);font-weight:700;text-decoration:none;}
+@media(max-width:640px){.nav{padding:16px 20px;}.article,.post-nav{padding-left:20px;padding-right:20px;}}
+</style>
+
+  <!-- Google Analytics（変更不要・全ページ共通） -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SR7173PP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7SR7173PP1");
+  </script>
+</head>
+<body>
+
+<!-- Nav（変更不要） -->
+<nav class="nav">
+  <a href="../index.html" class="logo">j<span>.</span>u<span>.</span>n</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../blog.html">Blog</a>
+    <a href="https://youtube.com/@jun.acoustic_moto_life" target="_blank">YouTube</a>
+  </div>
+</nav>
+
+<!-- 記事本体。【】を埋める。--card-accent は CH の色（青#5b8fff / 紫#a78bfa / 緑#34d399） -->
+<article class="article" style="--card-accent:#5b8fff">
+
+  <div class="post-meta">
+    <span class="post-num">POST — 【03】</span>
+    <span class="post-date">【2026.06.13】</span>
+    <span class="post-tag">【カテゴリ】</span>
+  </div>
+
+  <h1 class="article-title">【記事タイトル】</h1>
+
+  <div class="body">
+
+    <!-- ▼ はじめに（2〜3段落：何の記事か・誰に向けてか） -->
+    <p>【1段落目】</p>
+    <p>【2段落目】</p>
+
+    <!-- ▼ 本文：h2 で大きく区切る -->
+    <h2>【セクション見出し】</h2>
+    <p>【本文】</p>
+
+    <h3>【小見出し（解決方法・教訓など）】</h3>
+    <p>【本文】</p>
+
+    <!-- 手順は番号付きリスト -->
+    <ol>
+      <li>【手順1】</li>
+      <li>【手順2】</li>
+    </ol>
+
+    <!-- ポイントは箇条書き -->
+    <ul>
+      <li>【ポイント】</li>
+    </ul>
+
+    <!-- コードは pre+code（緑で表示される） -->
+    <pre><code>【コード例】</code></pre>
+
+    <!-- 画像を入れる場合（キャプション必須） -->
+    <figure class="figure">
+      <img src="img/【画像名】.jpg" alt="【画像の内容を説明】">
+      <figcaption>【キャプション】</figcaption>
+    </figure>
+
+    <!-- ▼ まとめ -->
+    <h2>まとめ</h2>
+    <ul>
+      <li>【要点1】</li>
+      <li>【要点2】</li>
+    </ul>
+    <p>【一言の締め（余韻を残す）】</p>
+
+  </div>
+</article>
+
+<!-- 前後の記事リンク（無い側は <span> で空に） -->
+<nav class="post-nav">
+  <a class="prev" href="【前の記事】.html"><span class="label">← Prev</span>【前の記事タイトル】</a>
+  <a class="next" href="【次の記事】.html"><span class="label">Next →</span>【次の記事タイトル】</a>
+</nav>
+
+<footer class="footer">
+  <a href="../index.html" class="footer-logo">j.u.n</a>
+  <span>Built with Claude · GitHub Pages</span>
+</footer>
+
+</body>
+</html>
