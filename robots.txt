@@ -1,0 +1,5 @@
+# j.u.n — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://jun-canvas.github.io/sitemap.xml
